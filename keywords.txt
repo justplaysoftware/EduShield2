@@ -1,0 +1,54 @@
+#######################################
+# Syntax Coloring Map For EduShield2_7segment
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+EduShield2_7segment	KEYWORD1	EduShield2_7segment
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+displayLeftDigit	KEYWORD2
+displayRightDigit	KEYWORD2
+display_both	KEYWORD2
+displayDigits	KEYWORD2
+showLeadingZero	KEYWORD2
+showLeftDecimal KEYWORD2
+showRightDecimal	KEYWORD2
+getKey			KEYWORD2
+getKeyReading	KEYWORD2
+setKeypadType	KEYWORD2
+isButton1Pressed	KEYWORD2
+isButton2Pressed	KEYWORD2
+joystickUp		KEYWORD2
+joystickDown	KEYWORD2
+joystickLeft	KEYWORD2
+joystickRight	KEYWORD2
+joystickUpValue		KEYWORD2
+joystickDownValue	KEYWORD2
+joystickLeftValue	KEYWORD2
+joystickRightValue	KEYWORD2
+setRGB			KEYWORD2
+setRGBColor		KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+_JP_7SEG_0	LITERAL1
+_JP_7SEG_1	LITERAL1
+_JP_7SEG_2	LITERAL1
+_JP_7SEG_3	LITERAL1
+_JP_7SEG_4	LITERAL1
+_JP_7SEG_5	LITERAL1
+_JP_7SEG_6	LITERAL1
+_JP_7SEG_7	LITERAL1
+_JP_7SEG_8	LITERAL1
+_JP_7SEG_9	LITERAL1
+_JP_KEYPAD_4x4	LITERAL1
+_JP_KEYPAD_3x4	LITERAL1
+_JP_KEYPAD_1x4	LITERAL1
