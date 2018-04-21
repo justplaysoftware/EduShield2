@@ -1,5 +1,5 @@
 // Edu-Shield 2 Library
-// v1.0 by JustPlay Software, 2018
+// v1.0.1 by JustPlay Software, Apr 2018
 //
 // this file defines constants for
 // the 7-segment display
@@ -101,7 +101,7 @@ class EduShield2_7segment
 	int  joystickRightValue();
 	void setJoystickSensitivity(int sensitivity);
 	void setRGB(int red, int green, int blue);
-	void setRGBColor(string color);
+	void setRGBColor(String color);
 	
   private:
     int _pinClock;
