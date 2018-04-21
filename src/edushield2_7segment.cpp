@@ -1,6 +1,7 @@
 // Source for Edu-Shield 2 7-Segment Display libraries
 //
 // JustPlay Software, Apr 2018
+// v1.0.1 Apr 2018 - fixed setRGBColor( String )
 //
 #include "Arduino.h"
 #include "edushield2_7segment.h"
@@ -61,110 +62,86 @@ EduShield2_7segment::EduShield2_7segment()
 	  int g=0;
 	  int b=0;
 	  
-	  switch(color) 
-	  {
-		case "BLACK":
-		case "OFF":
+	  if ((color == "OFF" ) || (color == "BLACK"))  {
 			r = 0;
 			b = 0;
 			g = 0;
-			break;
-		case "WHITE":
+	  } else if (color == "WHITE") {
 			r = 255;
 			g = 255;
 			b = 255;
-			break;
-		case "RED":
+	  }	else if (color == "RED") {
 			r = 255;
 			b = 0;
 			g = 0;
-			break;
-		case "GREEN":
+	  } else if (color == "GREEN") {
 			r = 0;
 			b = 0;
 			g = 128;
-			break;
-		case "BLUE":
+	  } else if (color == "BLUE") {
 			r = 0;
 			b = 255;
 			g = 0;
-			break;
-		case "YELLOW":
+	  } else if (color == "YELLOW") {
 			r = 255;
 			b = 0;
 			g = 255;
-			break;
-		case "CYAN":
+	  } else if ( color =="CYAN") {
 			r = 0;
 			b = 255;
 			g = 255;
-			break;
-		case "MAGENTA":
+	  } else if ( color == "MAGENTA") {
 			r = 255;
 			b = 255;
 			g = 0;
-			break;
-		case "SILVER":
+	  } else if ( color == "SILVER") {
 			r = 192;
 			b = 192;
 			g = 192;
-			break;
-		case "GRAY":
+	  } else if (color == "GRAY") {
 			r = 128;
 			b = 128;
 			g = 128;
-			break;
-		case "OLIVE":
+	  } else if (color == "OLIVE") {
 			r = 128;
 			b = 0;
 			g = 128;
-			break;
-		case "LIME":
+	} else if ( color ==  "LIME") {
 			r = 0;
 			b = 0;
 			g = 255;
-			break;
-		case "PURPLE":
+	} else if ( color ==  "PURPLE") {
 			r = 128;
 			b = 128;
 			g = 0;
-			break;
-		case "TEAL":
+	} else if ( color ==  "TEAL") {
 			r = 0;
 			b = 128;
 			g = 128;
-			break;
-		case "NAVY":
+	} else if ( color ==  "NAVY") {
 			r = 0;
 			b = 128;
 			g = 0;
-			break;
-		case "BROWN":
+	} else if ( color ==  "BROWN") {
 			r = 139;
 			b = 19;
 			g = 69;
-			break;
-		case "ORANGE":
+	} else if ( color ==  "ORANGE") {
 			r = 255;
 			b = 0;
 			g = 165;
-			break;
-		case "GOLD":
+	} else if ( color ==  "GOLD") {
 			r = 255;
 			b = 0;
 			g = 215;
-			break;
-		case "PINK":
+	} else if ( color ==  "PINK") {
 			r = 255;
 			b = 203;
 			g = 192;
-			setRGB(255,192,203);
-			break;
-		default:
+	} else {
 			r = 0;
 			b = 0;
 			g = 0;
-			break;
 	  }
 	  
 	  setRGB( r, g, b);	  
