@@ -8,29 +8,10 @@
 
 #include "Arduino.h"
 
-// only uncomment this if you have an Edu-Shield 2 Rev A (see back)
-//#define _JP_EDUSHIELD2_REVA
-
-// Edu-Shield 2 constants that are different between Rev A and Rev B
-// the first rev A of the EduShield 2 had the joysticks reversed
-// at the top, uncomment #define _JP_EDUSHIELD2_REVA 
-#ifdef _JP_EDUSHIELD2_REVA
-  #define _JP_UD_MIN  1023
-  #define _JP_UD_MAX  0
-  #define _JP_LR_MIN  1023
-  #define _JP_LR_MAX  0
-  #define _JP_KEYPAD_PIN	A3
-  #define _JP_GREEN_LED	3
-  #define _JP_BLUE_LED	5
-#else
-  #define _JP_UD_MIN  0
-  #define _JP_UD_MAX  1023
-  #define _JP_LR_MIN  0
-  #define _JP_LR_MAX  1023	
-  #define _JP_KEYPAD_PIN	A7
-  #define _JP_GREEN_LED	3
-  #define _JP_BLUE_LED	5
-#endif
+// if you have Rev A of the Edu-Shield board, then
+// before you call EduShield2_7segment.begin() you
+// must set EduShield2_7segment.revA = true;
+// then call begin()
 
 //  YOU SHOULD NOT NEED TO CUSTOMIZE ANYTHING BELOW HERE
 
