@@ -29,16 +29,38 @@ EduShield2_7segment::EduShield2_7segment()
   joystickSensitivity = 1023;	// full sensitivity
   pinMode(_JP_JOYSTICK_UP_DOWN, INPUT);
   pinMode(_JP_JOYSTICK_LEFT_RIGHT, INPUT);
-
-  pinMode( _JP_GREEN_LED, OUTPUT);
-  pinMode( _JP_BLUE_LED, OUTPUT);
-  pinMode( _JP_RED_LED, OUTPUT);
   
+  }
+
+  void EduShield2_7segment::begin()
+  {
+	  if (revA == true) 
+	  {
+	    _JP_UD_MIN = 1023;
+	    _JP_UD_MAX = 0;
+	    _JP_LR_MIN = 1023;
+	    _JP_LR_MAX = 0;	
+	    _JP_KEYPAD_PIN= 16;
+	    _JP_GREEN_LED = 3;
+	    _JP_BLUE_LED = 5;
+	  } else {
+	    _JP_UD_MIN = 0;
+	    _JP_UD_MAX = 1023;
+	    _JP_LR_MIN = 0;
+	    _JP_LR_MAX = 1023;	
+	    _JP_KEYPAD_PIN= 17;
+	    _JP_GREEN_LED = 3;
+	    _JP_BLUE_LED = 5;
+	  }
+	  pinMode( _JP_GREEN_LED, OUTPUT);
+	  pinMode( _JP_BLUE_LED, OUTPUT);
+  	  pinMode( _JP_RED_LED, OUTPUT);
+
   }
 
   void EduShield2_7segment::setRGB(int r, int g, int b)
   {
-    analogWrite(_JP_RED_LED, r);
+    	analogWrite(_JP_RED_LED, r);
 	analogWrite(_JP_GREEN_LED, g);
 	analogWrite(_JP_BLUE_LED, b);
 	
@@ -56,7 +78,7 @@ EduShield2_7segment::EduShield2_7segment()
 	  
   } */
   
-  void EduShield2_7segment::setRGBColor(string color)
+  void EduShield2_7segment::setRGBColor(String color)
   {
 	  int r=0;
 	  int g=0;
