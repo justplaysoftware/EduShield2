@@ -79,14 +79,15 @@ class EduShield2_7segment
 {
   public:
     EduShield2_7segment();
-    void displayLeftDigit(int num);
-    void displayRightDigit(int num);
-    void displayDigits(int left, int right);
-    void display_both(int num);
-    bool showLeadingZero;
-    void showLeftDecimal(bool show);
-    void showRightDecimal(bool show);
-    void setKeypadType(int keypad_type);
+        void begin();
+        void displayLeftDigit(int num);
+        void displayRightDigit(int num);
+        void displayDigits(int left, int right);
+        void display_both(int num);
+        bool showLeadingZero;
+        void showLeftDecimal(bool show);
+        void showRightDecimal(bool show);
+        void setKeypadType(int keypad_type);
 	char getKey();
 	int  getKeyReading();
 	bool isButton1Pressed();
