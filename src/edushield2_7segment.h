@@ -102,8 +102,8 @@ class EduShield2_7segment
 	int readJoystickLR();
 	int _JP_UD_MIN=1023;
         int _JP_UD_MAX=0;
-        int _JP_LR_MIN  1023;
-        int _JP_LR_MAX  0;
+        int _JP_LR_MIN = 1023;
+        int _JP_LR_MAX = 0;
         int _JP_KEYPAD_PIN=17;
         int _JP_GREEN_LED=3;
         int _JP_BLUE_LED=5;
