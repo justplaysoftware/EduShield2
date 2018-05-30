@@ -17,7 +17,7 @@ displayRightDigit	KEYWORD2
 display_both	KEYWORD2
 displayDigits	KEYWORD2
 showLeadingZero	KEYWORD2
-showLeftDecimal KEYWORD2
+showLeftDecimal	KEYWORD2
 showRightDecimal	KEYWORD2
 getKey			KEYWORD2
 getKeyReading	KEYWORD2
