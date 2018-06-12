@@ -34,6 +34,9 @@ joystickLeftValue	KEYWORD2
 joystickRightValue	KEYWORD2
 setRGB			KEYWORD2
 setRGBColor		KEYWORD2
+pulseRate_Observe	KEYWORD2
+pulseRate_Startup	KEYWORD2
+pulseRate_getBPM	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
