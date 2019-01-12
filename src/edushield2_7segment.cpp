@@ -2,7 +2,8 @@
 //
 // JustPlay Software, Apr 2018
 // v1.0.1 Apr 2018 - fixed setRGBColor( String )
-//
+// v1.0.6 Jan 2019 - bug fixes through 1.0.5, 1.0.6 fixed revA up/down reversal
+
 #include "Arduino.h"
 #include "edushield2_7segment.h"
 
@@ -36,8 +37,8 @@ EduShield2_7segment::EduShield2_7segment()
   {
 	  if (revA == true) 
 	  {
-	    _JP_UD_MIN = 1023;
-	    _JP_UD_MAX = 0;
+	    _JP_UD_MIN = 0;
+	    _JP_UD_MAX = 1023;
 	    _JP_LR_MIN = 1023;
 	    _JP_LR_MAX = 0;	
 	    _JP_KEYPAD_PIN= 16;
