@@ -1,0 +1,94 @@
+#include <LCD_I2C.h>
+#include<Wire.h>
+#include <nRF24L01.h>
+#include <printf.h>
+#include <RF24.h>
+#include <RF24_config.h>
+#define ButtonA 2
+#define ButtonB 3
+#define ButtonC 4
+#define ButtonD 5
+#define joystickX A0 
+#define joystickY A1
+#define CE 9
+#define CSN 10
+int pocitadlo = 1;
+int PocitadloOvertake = 0;
+int AxisX = A0;
+int AxisY = A1;
+bool OvertakeModeON = false;
+int Buttons[] ={ButtonA, ButtonB, ButtonC ,ButtonD};
+byte prijimacAuto[]= "AUTO00";
+RF24 radio(CE,CSN);
+LCD_I2C lcd(0x27);
+void setup() {
+  // put your setup code here, to run once:
+lcd.begin();
+lcd.backlight();
+  for (int i; i < 5;i++)
+  {
+  pinMode(Buttons[i], INPUT);
+  digitalWrite(Buttons[i], HIGH);
+  }
+  Serial.begin(9600);
+  radio.begin();
+  radio.openWritingPipe(prijimacAuto);
+  radio.setPALevel(RF24_PA_LOW);
+  pinMode(joystickX, INPUT);
+  pinMode(joystickY, INPUT);
+}
+
+
+void Error()
+{
+  lcd.clear();
+  lcd.setCursor(4,0); 
+  lcd.print("Error");
+}
+void loop() {
+
+  if (digitalRead(ButtonD)==LOW)
+  {
+    PocitadloOvertake++;
+    lcd.clear();
+    lcd.setCursor(4,0); 
+    lcd.print("Overtake");
+     if(PocitadloOvertake % 2 == 0)
+   {
+    lcd.setCursor(7,1);
+    lcd.print("OFF"); 
+    OvertakeModeON = false;
+    } 
+  else
+  {
+    lcd.setCursor(7,1);
+    lcd.print("ON"); 
+    OvertakeModeON = true;
+    } 
+  }
+  if (digitalRead(ButtonB)==LOW)
+  {
+    switch(pocitadlo)
+    {
+      case 1 :
+      lcd.clear();
+    lcd.setCursor(4,0); 
+    lcd.print("Overtake");
+        pocitadlo = 1;    
+         break;
+      default :
+      Error(); 
+         break;
+    }
+  }
+radio.stopListening();
+radio.write(&OvertakeModeON,sizeof(OvertakeModeON));
+int osaX = analogRead(joystickX);
+int osaY = analogRead(joystickY);
+int souradniceX = map(osaX, 0 , 1023,0,180);
+radio.write(&souradniceX,sizeof(souradniceX));
+int souradniceY = map(osaY, 0 , 1024,0,51) - 25;
+radio.write(&souradniceY,sizeof(souradniceY));
+delay(5);
+
+}
