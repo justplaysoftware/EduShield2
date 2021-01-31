@@ -1,0 +1,81 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#define CE 8
+#define CS 9
+#include <Servo.h> 
+RF24 radio(CE, CS);
+byte prijimacAuto[]= "AUTO00";
+Servo ZataceniServo;
+int EnA = 2;
+int In1 = 3;
+int In2 = 4;
+int EnB = 5;
+int In3 = 6;
+int In4 = 7;
+int JoystickX = 0;
+int JoystickY = 0;
+bool OverTakeMode = false;
+
+void setup() 
+{
+ZataceniServo.attach(A1);
+radio.begin();
+radio.openReadingPipe(0,prijimacAuto);
+radio.setPALevel(RF24_PA_LOW);
+radio.startListening();
+pinMode(EnA,OUTPUT);
+pinMode(In1,OUTPUT);
+pinMode(In2,OUTPUT);
+pinMode(EnB,OUTPUT);
+pinMode(In3,OUTPUT);
+pinMode(In4,OUTPUT);
+}
+
+void OverTakeMetoda(bool On,int RychlostPrvnihoMotoru)
+{
+  if(On == true)
+  {
+    digitalWrite(In3,HIGH);
+    digitalWrite(In4,LOW);
+    analogWrite(EnB,RychlostPrvnihoMotoru);
+}
+if(On == false)
+{
+  digitalWrite(In3,LOW);
+    digitalWrite(In4,LOW);
+    analogWrite(EnB,0);
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  radio.startListening();
+  if (radio.available())
+  {
+    while(radio.available())
+    {
+      //EnA,In1,In2 = Motor
+      radio.read(&OverTakeMode,sizeof(OverTakeMode));
+      radio.read(&JoystickX,sizeof(JoystickX));
+      radio.read(&JoystickY,sizeof(JoystickY));
+    }
+    
+  }
+ZataceniServo.write(JoystickX);
+if(JoystickY >= 0)
+{
+   digitalWrite(In1,HIGH);
+    digitalWrite(In2,LOW);
+    analogWrite(EnA,JoystickY * 10);
+    OverTakeMetoda(OverTakeMode,JoystickY * 10);
+  }
+if(JoystickY < 0)
+{
+  digitalWrite(In2,HIGH);
+    digitalWrite(In1,LOW);
+    analogWrite(EnA,JoystickY * (-10));
+    OverTakeMetoda(false,JoystickY * 10);
+  }
+  delay(5);
+}
